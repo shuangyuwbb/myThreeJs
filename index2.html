@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>第一个three.js文件_WebGL三维场景</title>
+    <link rel="stylesheet" href="./index.css">
+    <!--引入three.js三维引擎-->
+    <script src="http://www.yanhuangxueyuan.com/threejs/build/three.js"></script>
+
+    <script src="http://www.yanhuangxueyuan.com/threejs/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="./index.js"></script>
+</head>
+
+<body class="change-box">
+   <div>
+       <label>型状：</label>
+       <select onchange="handleChange()" id="s1">
+           <option>--请选择--</option>
+           <option value="BoxGeometry">矩形</option>
+           <!--        <option value="">柱形</option>-->
+           <option value="SphereGeometry">球体</option>
+           <option value="CylinderGeometry">八面体</option>
+           <option value="OctahedronGeometry">十二面体</option>
+           <option value="DodecahedronGeometry">二十面体</option>
+       </select>
+       <label>长：</label><input id="sid" type="number"  name="long">
+       <label>宽：</label><input type="number"  name="wide">
+       <label>高：</label><input oninput="input()" type="number"  name="tall">
+       <input type="submit" onclick="submit()" value="提交">
+   </div>
+   <div id="canvasId"></div>
+<script>
+    var inputs = document.getElementsByTagName('input')
+    var selectedText = ''
+    function handleChange(){
+        let select = document.getElementById("s1");
+        let options = select.options;
+        let index = select.selectedIndex;
+        selectedText = options[index].value;
+    }
+    function submit(){
+        console.log(selectedText)
+
+        let shape = selectedText
+        let x = inputs[0].value || 60
+        let y = inputs[1].value || 40
+        let z = inputs[2].value || 40
+        console.log(x);
+        console.log(y);
+        console.log(z);
+        tubiao(shape, x, y, z)
+    }
+    function input(e){
+        console.log(e)
+    }
+
+</script>
+</body>
+</html>

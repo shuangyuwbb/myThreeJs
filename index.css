@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    /* 隐藏body窗口区域滚动条 */
+}
+.change-box{
+
+}
+#div{
+    width: 800px;
+    height: 500px;
+}
