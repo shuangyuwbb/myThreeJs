@@ -16,13 +16,13 @@ function initDefaultLighting(scene) {
     point.position.set(400, 200, 300); //点光源位置
     scene.add(point); //点光源添加到场景中
     // 环境光设置
-    var ambient = new THREE.AmbientLight(0x444444);
+    var ambient = new THREE.AmbientLight(0xff00ff);
     scene.add(ambient);
 }
 // 初始化渲染器
 function initRenderer() {
     var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0x000000));
+    renderer.setClearColor(new THREE.Color(0x002200));// 设置环境色
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById("canvasId").appendChild(renderer.domElement);
     return renderer

@@ -22,7 +22,7 @@ function initObject(arr){
     };
     // 创建立体模型
     var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); // 材质设置
+    var material = new THREE.MeshBasicMaterial( { color: 0xcccccc } ); // 材质设置
     var mesh = new THREE.Mesh( geometry, material ) ;
     // scene.add( mesh );
     return mesh
