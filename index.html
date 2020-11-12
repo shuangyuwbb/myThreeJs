@@ -20,6 +20,12 @@
         {x:3,y:1},
         {x:1,y:0}
     ]
+    var data = [
+        {x:-2,y:5},
+        {x:3,y:2},
+        {x:3,y:1},
+        {x:1,y:0}
+    ]
     var data2 = [
         {x:-2,y:3},
         {x:2,y:6},
@@ -78,6 +84,11 @@
     var cube2BSP = new ThreeBSP(mesh2);
 
     resultBSP = cube2BSP.subtract(sphere1BSP);// 减掉
+    /**
+     * union 并集
+     * subtract  差集
+     * intersect 交集
+     */
     result = resultBSP.toMesh();
     result.material.shading = THREE.FlatShading;
     result.geometry.computeFaceNormals();
