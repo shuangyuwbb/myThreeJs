@@ -2,7 +2,7 @@ var camera
 var scene
 var renderer
 var shape
-function initObject(arr){
+function initObject(arr, depth){
     shape = new THREE.Shape();//shapes — 形状或者一个包含形状的数组。
     // 遍历数组将所有二维坐标连接成面
     for (let i=0; i<arr.length; i++){
@@ -17,7 +17,7 @@ function initObject(arr){
     // 拉伸相关配置
     var extrudeSettings = {
         steps: 1,
-        depth: 1, // 拉伸厚度
+        depth: depth || 1, // 拉伸厚度
         bevelEnabled: false,// 拉伸的图形是否为斜角
     };
     // 创建立体模型
@@ -42,7 +42,7 @@ function render(){
 //窗口大小变化监听
 window.addEventListener('resize',onResize,false);
 
-function init(arr1, arr2){
+function init(arr1, arr2, depth){
     scene = new THREE.Scene()
     camera = initCamera()
     let axios = new  THREE.AxesHelper(90);
@@ -50,13 +50,9 @@ function init(arr1, arr2){
     initDefaultLighting(scene)
     scene.add(axios)
     renderer = initRenderer()
-    let object1 = initObject(arr1)
-    let object2 = initObject(arr2)
+    let object1 = initObject(arr1, depth)
+    let object2 = initObject(arr2, depth)
     subtract(object1, object2)
 
     render()
 }
-
-
-
-
