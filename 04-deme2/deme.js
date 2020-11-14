@@ -5,6 +5,7 @@ var renderer
 // 初始化对象，
 function initObject(arr, depth){
     // 二维样条曲线  Catmull-Rom算法
+    arr.push(arr[0])
     let arrVectors = []
     for (let i=0; i<arr.length; i++){
         // 2D样条曲线
@@ -41,6 +42,7 @@ function onResize(){
 
 function render(){
     renderer.render(scene, camera);
+    result.rotateY(0.01)
     requestAnimationFrame(render)
 }
 

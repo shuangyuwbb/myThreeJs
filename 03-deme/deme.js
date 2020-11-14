@@ -50,9 +50,12 @@ function init(arr1, arr2, depth){
     initDefaultLighting(scene)
     scene.add(axios)
     renderer = initRenderer()
-    let object1 = initObject(arr1, depth)
-    let object2 = initObject(arr2, depth)
-    subtract(object1, object2)
-
+    if(arr2 !== undefined){
+        var object1 = initObject(arr1, depth)
+        var object2 = initObject(arr2, depth)
+        subtract(object1, object2)
+    }else{
+        var object1 = initObject(arr1, depth)
+    }
     render()
 }
