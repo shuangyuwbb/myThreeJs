@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直线绘制</title>
+    <script src="../lib/three.js"></script>
+    <script src="../lib/OrbitControls.js"></script>
+    <script src="../lib/threebsp.js"></script>
+
+    <script src="prepare.js"></script>
+    <script src="deme.js"></script>
+
+    <script src="xmlParse.js"></script>
+
+</head>
+<body onload="initScene()">
+
+<script>
+    function initScene(){
+        scene = new THREE.Scene()
+        camera = initCamera()
+        let axios = new  THREE.AxesHelper(90);
+        new THREE.OrbitControls(camera)//创建控件对象
+        initDefaultLighting(scene)
+        scene.add(axios)
+        renderer = initRenderer()
+        let arrPoints = getXmlNode('./data.xml')
+        let arr = getPointPosition(arrPoints)
+        init(arr)
+        console.log('启动。。。')
+    }
+</script>
+</body>
+</html>
