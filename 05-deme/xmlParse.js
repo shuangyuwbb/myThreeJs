@@ -6,7 +6,7 @@ function getData(url){
     return xmltext.responseXML
 }
 
-
+/**形参url， 返回一个具有isfill，polyflag标识的point数组*/
 function getXmlNode(url){
     xmlDoc = getData(url)
 
@@ -18,33 +18,60 @@ function getXmlNode(url){
 
     for (let i = 0; i < lwPolyLines.length; i++) {
         let points = []
-        var poly = lwPolyLines[i].attributes.PolyFlag // 是否闭合  undefined不闭合
-        var isFill = lwPolyLines[1].attributes.IsFill // 是否填充  undefined不填充
+        var polyFlag = lwPolyLines[i].attributes.PolyFlag// 是否闭合  undefined不闭合
+        var isFill = lwPolyLines[i].attributes.IsFill // 是否填充  undefined不填充
         for (let j=0; j<lwPolyLines[i].children.length; j++){
             points.push(lwPolyLines[i].children[j]);
         }
+        if(polyFlag === undefined && isFill === undefined){
+            // 不闭合不填充
+            points.unshift({polyFlag: false})
+            points.unshift({isFill: false})
+        }else if(polyFlag === undefined){
+            // 不闭合
+            points.unshift({polyFlag: false})
+            points.unshift({isFill: true})
+        }else if(isFill === undefined){
+            // 不填充
+            points.unshift({polyFlag: true})
+            points.unshift({isFill: false})
+        }else{
+            // 填充闭合
+            points.unshift({polyFlag: true})
+            points.unshift({isFill: true})
+        }
+
         arrPoints.push(points)
-        let positions = getPointPosition(points)
-        init(positions, isFill, polyFlag)
     }
+    return arrPoints
 }
 
 //获取Point对应的坐标
+/** 形参getXmlNode返回的点的信息， 返回各个点的坐标*/
 function getPointPosition(arrPoints){
-    // console.log(arrPoints)
-    let positions = []
+
+    let information = []
+    let positions
     for (let i=0; i<arrPoints.length; i++){
-        if(arrPoints[i].attributes[0] !== undefined){
-            positions.push({x:0, y:0})
-            if(arrPoints[i].attributes[1] === undefined){
-                positions.push({x:arrPoints[i].attributes[0].textContent, y:0})
+        positions = []
+        for (let j=1; j<arrPoints[i].length;j++){
+            if(j < 2){
+                positions.push(arrPoints[i][0],arrPoints[i][1])
+                continue
+            }
+            if(arrPoints[i][j].attributes.Y === undefined && arrPoints[i][j].attributes.X === undefined){
+                positions.push({x:0, y:0})
+            }else if(arrPoints[i][j].attributes.X === undefined){
+                positions.push({x:0, y:Number(arrPoints[i][j].attributes[0].textContent)})
+            }else if(arrPoints[i][j].attributes.Y === undefined){
+                positions.push({x:Number(arrPoints[i][j].attributes[0].textContent), y:0})
             }else{
-                positions.push({x:arrPoints[i].attributes[0].textContent, y:arrPoints[i].attributes[1].textContent})
+                positions.push({x:Number(arrPoints[i][j].attributes[0].textContent), y:Number(arrPoints[i][j].attributes[1].textContent)})
             }
         }
+        information.push(positions)
     }
-    return positions;
-    // console.log(positions);
+    return information
 }
 
 

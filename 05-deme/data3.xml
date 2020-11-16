@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FsPart>
+    <Blocks Handle="6"/>
+    <NestParts>
+        <TGksNestOriginPart Handle="10303" Name="M225,M226拆解图Z2" ID="{FB25E827-0926-4813-941D-D1FD05388049}" PortionName="M225,M226拆解图Z2" ColorIdx="152" Color="12607488" OutlineID="10309" UUID="{FB25E827-0926-4813-941D-D1FD05388049}" FullPath="C:\Users\Alex\Documents\M225,M226拆解图.dxf" Class="NestOriginPart">
+            <ExtMin/>
+            <ExtMax X="94" Y="92"/>
+            <Entities Handle="10307">
+                <LwPolyline Handle="10308" ChannelPort="1" ColorIdx="98" Color="4227072" LayerName="0" LinearName="Continuous" LeadInOptimizeFlag="6" PathStartParam="4" PointCount="6" PolyFlag="3">
+                    <Point X="56.5" Y="57.216878"/>
+                    <Point X="56.5" Y="42.783122"/>
+                    <Point X="44" Y="35.566243"/>
+                    <Point X="31.5" Y="42.783122"/>
+                    <Point X="31.5" Y="57.216878"/>
+                    <Point X="44" Y="64.433757"/>
+                </LwPolyline>
+                <LwPolyline Handle="10309" ChannelPort="1" ColorIdx="98" Color="4227072" LayerName="0" SeqLevel="1024" LinearName="Continuous" IsFill="true" LeadInOptimizeFlag="6" PointCount="4" PolyFlag="1">
+                    <Point Y="92"/>
+                    <Point X="94" Y="92"/>
+                    <Point X="94"/>
+                    <Point/>
+                </LwPolyline>
+                <Text Handle="10310" ColorIdx="98" Color="4227072" LayerName="打标线" BaseHeight="9323" FontName="tssdeng" Height="15" WidthFactor=".7">M225-6
+                    <AlignPos X="23.619642" Y="70.617897"/>
+                    <AlignPos2/>
+                </Text>
+                <TopNode>
+                    <ShapeNode Handle="10304" Shape="10308"/>
+                    <ShapeNode Handle="10305" Shape="10309"/>
+                    <ShapeNode Handle="10306" Shape="10310"/>
+                </TopNode>
+            </Entities>
+            <HomeRef RefType="3"/>
+            <BasePoint/>
+        </TGksNestOriginPart>
+    </NestParts>
+</FsPart>
